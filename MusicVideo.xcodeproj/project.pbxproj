@@ -54,14 +54,46 @@
 		535E0B5E1EAC4FBD00F5E31D /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
-				535E0B5F1EAC4FBD00F5E31D /* AppDelegate.swift */,
-				535E0B611EAC4FBD00F5E31D /* ViewController.swift */,
-				535E0B631EAC4FBD00F5E31D /* Main.storyboard */,
-				535E0B661EAC4FBD00F5E31D /* Assets.xcassets */,
-				535E0B681EAC4FBD00F5E31D /* LaunchScreen.storyboard */,
-				535E0B6B1EAC4FBD00F5E31D /* Info.plist */,
+				535E0B741EAC5A6A00F5E31D /* Suppoting Files */,
+				535E0B711EAC5A4E00F5E31D /* Model */,
+				535E0B721EAC5A5A00F5E31D /* View */,
+				535E0B731EAC5A6200F5E31D /* Controller */,
 			);
 			path = MusicVideo;
+			sourceTree = "<group>";
+		};
+		535E0B711EAC5A4E00F5E31D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		535E0B721EAC5A5A00F5E31D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				535E0B631EAC4FBD00F5E31D /* Main.storyboard */,
+				535E0B681EAC4FBD00F5E31D /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		535E0B731EAC5A6200F5E31D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				535E0B611EAC4FBD00F5E31D /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		535E0B741EAC5A6A00F5E31D /* Suppoting Files */ = {
+			isa = PBXGroup;
+			children = (
+				535E0B5F1EAC4FBD00F5E31D /* AppDelegate.swift */,
+				535E0B6B1EAC4FBD00F5E31D /* Info.plist */,
+				535E0B661EAC4FBD00F5E31D /* Assets.xcassets */,
+			);
+			name = "Suppoting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
