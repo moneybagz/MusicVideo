@@ -13,22 +13,60 @@ class Videos {
     // Data Encapsulation
     
     private var _vName: String
+    private var _vRights: String
+    private var _vPrice: String
     private var _vImageUrl: String
+    private var _vArtist: String
     private var _vVideoUrl: String
-    
+    private var _vImid: String
+    private var _vGenre: String
+    private var _vLinkToiTunes: String
+    private var _vReleaseDate: String
+
     // Make a getter
     
     var vName: String {
         return _vName
     }
     
+    var vRights: String {
+        return _vName
+    }
+    
+    var vPrice: String {
+        return _vPrice
+    }
+    
     var vImageUrl: String {
         return _vImageUrl
+    }
+
+    var vArtist: String{
+        return _vArtist
     }
     
     var vVideoUrl: String {
         return _vVideoUrl
     }
+
+    var vImid: String {
+        return _vImid
+    }
+
+    var vGenre: String {
+        return _vGenre
+    }
+    
+    var vLinkToiTunes: String {
+        return _vLinkToiTunes
+    }
+    
+    var vReleaseDate: String {
+        return _vReleaseDate
+    }
+    
+    // This variable gets created by our UI
+    var vImageData:Data?
     
     init(data: JSONDictionary) {
         
@@ -45,6 +83,23 @@ class Videos {
             _vName = ""
         }
         
+        // The Video Rights
+        if let rights = data["rights"] as? JSONDictionary, let vRights = rights["label"] as? String {
+            self._vRights = vRights
+        }
+        else{
+            _vRights = ""
+        }
+        
+        // The Video Price
+        if let price = data["im:Price"] as? JSONDictionary,
+            let vPrice = price["label"] as? String {
+            self._vPrice = vPrice
+        }
+        else{
+            _vPrice = ""
+        }
+        
         // The Video Image
         if let img = data["im:image"] as? JSONArray,
             let image = img[2] as? JSONDictionary,
@@ -54,7 +109,15 @@ class Videos {
         else {
             _vImageUrl = ""
         }
-        
+
+        // The Video Artist
+        if let artist = data["im:artist"] as? JSONDictionary,
+            let vArtist = artist["label"] as? String {
+            self._vArtist = vArtist
+        }
+        else {
+            _vArtist = ""
+        }
         
         // The Video URL
         if let linkArray = data["link"] as? JSONArray,
@@ -65,6 +128,45 @@ class Videos {
         }
         else{
             _vVideoUrl = ""
+        }
+
+        // The Video Image ID
+        if let imid = data["id"] as? JSONDictionary,
+            let imidAttributes = imid["attributes"] as? JSONDictionary,
+            let vImid = imidAttributes["im:id"] as? String {
+            _vImid = vImid
+        }
+        else {
+            _vImid = ""
+        }
+
+        // The Video Genre
+        if let genre = data["category"] as? JSONDictionary,
+            let genreAttributes = genre["attributes"] as? JSONDictionary,
+            let vGenre = genreAttributes["term"] as? String {
+            _vGenre = vGenre
+        }
+        else{
+            _vGenre = ""
+        }
+        
+        // Link to itunes
+        if let link = data["id"] as? JSONDictionary,
+            let iLink = link["label"] as? String {
+            _vLinkToiTunes = iLink
+        }
+        else{
+            _vLinkToiTunes = ""
+        }
+        
+        // Release Date
+        if let release = data["im:releaseDate"] as? JSONDictionary,
+            let releaseAttributes = release["attributes"] as? JSONDictionary,
+            let vReleaseDate = releaseAttributes["label"] as? String {
+            _vReleaseDate = vReleaseDate
+        }
+        else{
+            _vReleaseDate = ""
         }
     }
 }
