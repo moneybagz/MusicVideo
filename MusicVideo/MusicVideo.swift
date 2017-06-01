@@ -30,7 +30,7 @@ class Videos {
     }
     
     var vRights: String {
-        return _vName
+        return _vRights
     }
     
     var vPrice: String {
@@ -92,7 +92,7 @@ class Videos {
         }
         
         // The Video Price
-        if let price = data["im:Price"] as? JSONDictionary,
+        if let price = data["im:price"] as? JSONDictionary,
             let vPrice = price["label"] as? String {
             self._vPrice = vPrice
         }
@@ -103,7 +103,7 @@ class Videos {
         // The Video Image
         if let img = data["im:image"] as? JSONArray,
             let image = img[2] as? JSONDictionary,
-            let imageString = image["Label"] as? String {
+            let imageString = image["label"] as? String {
             _vImageUrl = imageString.replacingOccurrences(of: "100x100", with: "600x600")
         }
         else {

@@ -16,7 +16,7 @@ class APIManager {
 //        let session = URLSession
 //    }
     
-    func loadData(urlString: String, completion: @escaping (_ result: String) -> Void) {
+    func loadData(urlString: String, completion: @escaping ([Videos]) -> Void) {
         
         let config = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: config)
@@ -29,15 +29,26 @@ class APIManager {
             
             
             if error != nil {
-                DispatchQueue.main.async {
-                    completion((error!.localizedDescription))
-                }
+                    print(error!.localizedDescription)
             }
             else {
                 print(data!)
                 
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? JSONDictionary {
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? JSONDictionary,
+                        let feed = json["feed"] as? JSONDictionary,
+                        let entries = feed["entry"] as? JSONArray {
+                        
+                        var videos = [Videos]()
+                        for entry in entries {
+                            let entry = Videos(data: entry as! JSONDictionary)
+                            videos.append(entry)
+                        }
+                        
+                        let i = videos.count
+                        print("iTunesApiManager - total count --> \(i)")
+                        print(" ")
+                        
                         
                         print(json)
                         
@@ -46,15 +57,16 @@ class APIManager {
                             
                             DispatchQueue.main.async {
                                 
-                                completion("Json serialization successful")
+                                completion(videos)
                             }
                         }
                     }
                 }
                 catch {
-                    DispatchQueue.main.async {
-                        completion("error in json serialization")
-                    }
+//                    DispatchQueue.main.async {
+//                        completion("error in json serialization")
+//                    }
+                    print("error in json serialization")
                 }
             }
             
