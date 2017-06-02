@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var displayLabel: UILabel!
     
     var videos = [Videos]()
@@ -28,6 +29,23 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return videos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        let video = videos[indexPath.row]
+        
+        cell.textLabel?.text = "\(indexPath.row + 1)"
+        
+        cell.detailTextLabel?.text = video.vName
+        
+        return cell
     }
 
 
@@ -53,6 +71,8 @@ class ViewController: UIViewController {
             print("video URL = \(item.vVideoUrl)")
             print("price = \(item.vPrice)")
         }
+        
+        tableView.reloadData()
     }
     
     func reachabilityStatusChanged(){
