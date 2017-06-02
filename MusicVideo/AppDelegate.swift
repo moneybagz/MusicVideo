@@ -7,16 +7,44 @@
 //
 
 import UIKit
+var reachability: Reachability?
+var reachabilityStatus = WIFI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var internetCheck: Reachability?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(notification:)), name: NSNotification.Name.reachabilityChanged, object: nil)
+        
+        internetCheck = Reachability.forInternetConnection()
+        internetCheck?.startNotifier()
+        
         return true
+    }
+    
+    func reachabilityChanged(notification: Notification){
+        reachability = notification.object as? Reachability
+        statusChangedWithReachability(currentReachabilityStatus: reachability!)
+    }
+    
+    func statusChangedWithReachability(currentReachabilityStatus: Reachability){
+        
+        let networkStatus: NetworkStatus = currentReachabilityStatus.currentReachabilityStatus()
+        
+        switch networkStatus.rawValue {
+        case NotReachable.rawValue : reachabilityStatus = NOACCESS
+        case ReachableViaWiFi.rawValue : reachabilityStatus = WIFI
+        case ReachableViaWWAN.rawValue : reachabilityStatus = WWAN
+        default:return
+        }
+    
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReachStatusChanged"), object: nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -38,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.reachabilityChanged, object: nil)
     }
 
 

@@ -50,7 +50,7 @@ class APIManager {
                         print(" ")
                         
                         
-                        print(json)
+                        //print(json)
                         
 
                         DispatchQueue.global(qos: .userInitiated).async {
