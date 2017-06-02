@@ -24,6 +24,9 @@ class MusicVideoTableViewCell: UITableViewCell {
     
     func updateCell() {
         
+        musicTitle.text = video?.vName
+        rank.text = "\(video!.vRank)"
+        musicImage.image = UIImage(named: "sorry-image-not-available")
     }
 
 }
