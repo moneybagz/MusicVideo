@@ -31,22 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return videos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        let video = videos[indexPath.row]
-        
-        cell.textLabel?.text = "\(indexPath.row + 1)"
-        
-        cell.detailTextLabel?.text = video.vName
-        
-        return cell
-    }
+
 
 
     func didLoadData(videos: [Videos]) {
@@ -91,6 +76,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReachStatusChanged"), object: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return videos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        let video = videos[indexPath.row]
+        
+        cell.textLabel?.text = "\(indexPath.row + 1)"
+        
+        cell.detailTextLabel?.text = video.vName
+        
+        return cell
     }
 }
 

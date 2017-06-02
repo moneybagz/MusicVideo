@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53043C3B1EE084A9006ADC82 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 53043C3A1EE084A9006ADC82 /* Reachability.m */; };
+		53043C3D1EE204AA006ADC82 /* MusicVideoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53043C3C1EE204AA006ADC82 /* MusicVideoTVC.swift */; };
 		535E0B601EAC4FBD00F5E31D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E0B5F1EAC4FBD00F5E31D /* AppDelegate.swift */; };
 		535E0B621EAC4FBD00F5E31D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E0B611EAC4FBD00F5E31D /* ViewController.swift */; };
 		535E0B651EAC4FBD00F5E31D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535E0B631EAC4FBD00F5E31D /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		53043C381EE084A8006ADC82 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		53043C391EE084A9006ADC82 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		53043C3A1EE084A9006ADC82 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		53043C3C1EE204AA006ADC82 /* MusicVideoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVC.swift; sourceTree = "<group>"; };
 		535E0B5C1EAC4FBD00F5E31D /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535E0B5F1EAC4FBD00F5E31D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		535E0B611EAC4FBD00F5E31D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				535E0B611EAC4FBD00F5E31D /* ViewController.swift */,
+				53043C3C1EE204AA006ADC82 /* MusicVideoTVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				535E0B601EAC4FBD00F5E31D /* AppDelegate.swift in Sources */,
 				53043C3B1EE084A9006ADC82 /* Reachability.m in Sources */,
 				535E0B791EAE95A300F5E31D /* Constants.swift in Sources */,
+				53043C3D1EE204AA006ADC82 /* MusicVideoTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
