@@ -103,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				535E0B631EAC4FBD00F5E31D /* Main.storyboard */,
-				53043C401EE25AB0006ADC82 /* MusicVideoDetailVC.swift */,
 				535E0B681EAC4FBD00F5E31D /* LaunchScreen.storyboard */,
 			);
 			name = View;
@@ -112,6 +111,7 @@
 		535E0B731EAC5A6200F5E31D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				53043C401EE25AB0006ADC82 /* MusicVideoDetailVC.swift */,
 				535E0B611EAC4FBD00F5E31D /* ViewController.swift */,
 				53043C3C1EE204AA006ADC82 /* MusicVideoTVC.swift */,
 				53043C3E1EE21871006ADC82 /* MusicVideoTableViewCell.swift */,
