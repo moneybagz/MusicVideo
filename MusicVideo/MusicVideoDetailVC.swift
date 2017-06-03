@@ -21,6 +21,8 @@ class MusicVideoDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(prefferedFontChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
 
         title = videos.vArtist
         vName.text = videos.vName
@@ -34,6 +36,16 @@ class MusicVideoDetailVC: UIViewController {
         else {
             videoImage.image = UIImage(named: "sorry-image-not-available")
         }
+        
+        
+    }
+    
+    func prefferedFontChange(){
+        vName.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        vPrice.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        vRights.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        vGenre.font = UIFont.preferredFont(forTextStyle: .subheadline)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +53,11 @@ class MusicVideoDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
+    }
+
 
     /*
     // MARK: - Navigation
