@@ -23,10 +23,26 @@ class SettingsTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         touchID.isOn = UserDefaults.standard.bool(forKey: "SecSetting")
         
+        if UserDefaults.standard.object(forKey: "APICNT") != nil {
+            let theValue = UserDefaults.standard.object(forKey: "APICNT") as? NSNumber.IntegerLiteralType
+            APICnt.text = "\(String(describing: theValue))"
+            sliderCnt.value = Float(theValue!)
+        }
+        
         title = "settings"
+        
+        
+    }
+    @IBAction func valueChanged(_ sender: UISlider) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set(Int(sliderCnt.value), forKey: "APICNT")
+        APICnt.text = "\(Int(sliderCnt.value))"
     }
     
     @IBAction func touchIdSec(_ sender: UISwitch) {
