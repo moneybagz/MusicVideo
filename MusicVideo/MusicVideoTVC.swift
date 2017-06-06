@@ -14,9 +14,12 @@ class MusicVideoTVC: UITableViewController {
     
     
     var videos = [Videos]()
+    var limit = 10
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityStatusChanged), name: NSNotification.Name(rawValue: "ReachStatusChanged"), object: nil)
         
@@ -56,6 +59,9 @@ class MusicVideoTVC: UITableViewController {
             print("video URL = \(item.vVideoUrl)")
             print("price = \(item.vPrice)")
         }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.red]
+        title = "The iTumes Top \(limit) Music Videos"
         
         tableView.reloadData()
     }
@@ -98,11 +104,32 @@ class MusicVideoTVC: UITableViewController {
             }
         }
     }
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        
+        refreshControl?.endRefreshing()
+        runAPI()
+    }
+    
+    func getAPICount() {
+        if UserDefaults.standard.object(forKey: "APICNT") != nil {
+            let theValue = UserDefaults.standard.integer(forKey: "APICNT")
+            limit = theValue
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss"
+        let refreshDte = formatter.string(from: Date())
+        
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDte)")
+    }
     
     func runAPI() {
+        
+        getAPICount()
+        
         // call api
         let api = APIManager()
-        api.loadData(urlString: "http://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
+        api.loadData(urlString: "http://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json", completion: didLoadData)
     }
     
     deinit {

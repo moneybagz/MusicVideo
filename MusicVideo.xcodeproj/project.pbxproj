@@ -56,6 +56,7 @@
 		53043C371EE07FF7006ADC82 /* Obj-c */ = {
 			isa = PBXGroup;
 			children = (
+				535E0B611EAC4FBD00F5E31D /* ViewController.swift */,
 				53043C391EE084A9006ADC82 /* Reachability.h */,
 				53043C3A1EE084A9006ADC82 /* Reachability.m */,
 				53043C381EE084A8006ADC82 /* MusicVideo-Bridging-Header.h */,
@@ -115,7 +116,6 @@
 			children = (
 				53043C441EE29127006ADC82 /* SettingsTVC.swift */,
 				53043C401EE25AB0006ADC82 /* MusicVideoDetailVC.swift */,
-				535E0B611EAC4FBD00F5E31D /* ViewController.swift */,
 				53043C3C1EE204AA006ADC82 /* MusicVideoTVC.swift */,
 				53043C3E1EE21871006ADC82 /* MusicVideoTableViewCell.swift */,
 			);

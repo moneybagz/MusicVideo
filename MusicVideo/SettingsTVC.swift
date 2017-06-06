@@ -32,6 +32,9 @@ class SettingsTVC: UITableViewController {
             let theValue = UserDefaults.standard.object(forKey: "APICNT") as? NSNumber.IntegerLiteralType
             APICnt.text = "\(String(describing: theValue))"
             sliderCnt.value = Float(theValue!)
+        } else {
+            sliderCnt.value = 10.0
+            APICnt.text = "\(Int(sliderCnt.value))"
         }
         
         title = "settings"

@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var displayLabel: UILabel!
     
     var videos = [Videos]()
+    var limit = 10
+    var shoe = "shoe"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         reachabilityStatusChanged()
         
         let api = APIManager()
-        api.loadData(urlString: "http://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: didLoadData)
+        api.loadData(urlString: "http://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json", completion: didLoadData)
     }
 
     override func didReceiveMemoryWarning() {
