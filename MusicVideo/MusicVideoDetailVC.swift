@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class MusicVideoDetailVC: UIViewController {
     
@@ -39,6 +41,21 @@ class MusicVideoDetailVC: UIViewController {
         }
         
         
+    }
+    
+    @IBAction func playVideo(_ sender: UIBarButtonItem) {
+        
+        let url = URL(string: videos.vVideoUrl)
+        
+        let player = AVPlayer(url: url!)
+        
+        let playerViewController = AVPlayerViewController()
+        
+        playerViewController.player = player
+        
+        self.present(playerViewController, animated: true) { 
+            playerViewController.player?.play()
+        }
     }
     
     func prefferedFontChange(){
