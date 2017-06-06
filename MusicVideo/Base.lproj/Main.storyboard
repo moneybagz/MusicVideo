@@ -240,6 +240,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90W-ze-szi">
                                                     <rect key="frame" x="246" y="19" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="touchIdSec:" destination="3OM-w0-FQ1" eventType="valueChanged" id="LKC-cx-i0I"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

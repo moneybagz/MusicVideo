@@ -22,6 +22,7 @@ class MusicVideoDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(prefferedFontChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
 
         title = videos.vArtist
